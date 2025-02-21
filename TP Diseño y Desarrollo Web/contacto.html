@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <title>Contacto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: black;
+        }
+
+        a:link {
+        color: black; /* color de los enlaces no visitados */
+        }
+        a:visited {
+        color: black; /* color de los enlaces visitados */
+        }
+        a:hover {
+        color: gray; /* color de los enlaces cuando se pasa el cursor por encima */
+        }
+        a:active {
+        color: darkgray; /* color de los enlaces cuando se hacen click */
+        }
+
+        header {
+            background-color: #000000;
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid #333;
+        }
+        header h1 {
+            margin: 0;
+        }
+        .container {
+            width: 90%;
+            margin: 2rem auto;
+            text-align: center;
+        }
+        .inicio-contacto {
+            color: #ccc;
+            margin-bottom: 2rem;
+        }
+        form {
+            background-color: #111;
+            padding: 2rem;
+            border-radius: 5px;
+        }
+        input, textarea {
+            width: 99%;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            background-color: #333;
+            border: none;
+            color: #fff;
+        }
+        button {
+            padding: 1rem 2rem;
+            background-color: #444;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+        }
+        .recaptcha {
+            margin: 2rem 0;
+        }
+        /* Media Queries */
+        @media (max-width: 600px) {
+            .container {
+                width: 90%;
+                padding: 1rem;
+            }
+            input, textarea {
+                width: 95%;
+            }
+            header img {
+                width: 100%;
+                height: auto;
+            }
+            form {
+                padding: 1rem;
+            }
+            button {
+                width: 100%;
+                padding: 1rem;
+            } }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="./img/nombre.png" alt="Nombre" width="350px">
+    </header>
+    <div class="container">
+        <div class="inicio-contacto">
+            <a href="index.html"> Inicio </a> >> 
+            <a href="contacto.html"> Contacto </a> 
+        </div>
+        <h1>Contacto</h1>
+        <form id="contactForm">
+            <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+            <input type="tel" id="telefono" name="telefono" placeholder="Teléfono" required>
+            <textarea id="mensaje" name="mensaje" rows="4" placeholder="Mensaje" required></textarea>
+            <div class="recaptcha">
+                <input type="checkbox" id="recaptcha" name="recaptcha" required> No soy un robot
+            </div>
+            <button type="submit">ENVIAR</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var nombre = document.getElementById('nombre').value;
+            var email = document.getElementById('email').value;
+            var telefono = document.getElementById('telefono').value;
+            var mensaje = document.getElementById('mensaje').value;
+            
+            localStorage.setItem('contactoNombre', nombre);
+            localStorage.setItem('contactoEmail', email);
+            localStorage.setItem('contactoTelefono', telefono);
+            localStorage.setItem('contactoMensaje', mensaje);
+            
+            alert('Tus datos han sido guardados.');
+        });
+    </script>
+
+</body>
+</html>
